@@ -6,12 +6,19 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func main() {
 	urls := os.Args[1:]
 
 	for _, url := range urls {
+		isHttp := strings.HasPrefix(url, "http://")
+		// 没有http前缀，就为它加上前缀
+		if isHttp == false {
+			url = "http://" + url
+		}
+
 		resp, err := http.Get(url)
 
 		if err != nil {
@@ -19,6 +26,8 @@ func main() {
 			os.Exit(1)
 		}
 		defer resp.Body.Close()
+		// 打印HTTP状态码
+		fmt.Fprintf(os.Stderr, " http  Status:%v\v", resp.Status)
 
 		// 第一种
 		// b, err := ioutil.ReadAll(resp.Body)
