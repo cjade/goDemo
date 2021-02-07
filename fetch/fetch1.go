@@ -13,9 +13,9 @@ func main() {
 	urls := os.Args[1:]
 
 	for _, url := range urls {
-		isHttp := strings.HasPrefix(url, "http://")
+		hasHTTP := strings.HasPrefix(url, "http://")
 		// 没有http前缀，就为它加上前缀
-		if isHttp == false {
+		if hasHTTP == false {
 			url = "http://" + url
 		}
 
