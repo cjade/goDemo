@@ -20,6 +20,7 @@ func main() {
 		}
 		defer resp.Body.Close()
 
+		// 第一种
 		// b, err := ioutil.ReadAll(resp.Body)
 		// if err != nil {
 		// 	fmt.Fprintf(os.Stderr, "fetch: reading %s: %v\n", url, err)
@@ -28,6 +29,7 @@ func main() {
 
 		// fmt.Printf("%s", b)
 
+		// 第二种
 		_, err = io.Copy(os.Stdout, resp.Body)
 
 		if err != nil {
