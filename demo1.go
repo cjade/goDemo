@@ -12,7 +12,7 @@ import (
 
 var name string
 
-var aa *string
+var aaaaa *string
 
 func init() {
 	//自定义命令源码文件的参数使用说明,推荐使用这种方式
@@ -22,7 +22,7 @@ func init() {
 		flag.PrintDefaults()
 	}
 	// 第一种获取命令行参数： key,默认值，说明
-	aa = flag.String("aa", "哈哈", "dfdf")
+	aaaaa = flag.String("aa", "哈哈", "dfdf")
 
 	// 第二种获取命令行参数：地址，key,默认值，说明
 	flag.StringVar(&name, "name", "everyone", "The greeting object.")
@@ -39,5 +39,5 @@ func main() {
 	flag.Parse()
 	fmt.Println("Hello, 世界")
 	fmt.Printf("Hello, %s!\n", name)
-	fmt.Printf("Hello, %s!\n", *aa)
+	fmt.Printf("Hello, %s!\n", *aaaaa)
 }
