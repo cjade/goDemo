@@ -14,8 +14,9 @@ func main() {
 
 	for _, url := range urls {
 		hasHTTP := strings.HasPrefix(url, "http://")
+		hasHTTPS := strings.HasPrefix(url, "https://")
 		// 没有http前缀，就为它加上前缀
-		if hasHTTP == false {
+		if hasHTTP == false && hasHTTPS == false {
 			url = "http://" + url
 		}
 
@@ -27,7 +28,7 @@ func main() {
 		}
 		defer resp.Body.Close()
 		// 打印HTTP状态码
-		fmt.Fprintf(os.Stderr, " http  Status:%v\v", resp.Status)
+		// fmt.Fprintf(os.Stderr, " http  Status:%v\v", resp.Status)
 
 		// 第一种
 		// b, err := ioutil.ReadAll(resp.Body)
